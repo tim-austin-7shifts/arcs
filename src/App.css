@@ -1,0 +1,30 @@
+.content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.graph {
+  --big: 200px;
+  --small: 100px;
+
+  fill: none;
+  height: var(--size);
+  width: var(--size);
+  transition: all 400ms ease;
+
+  & .arc {
+    stroke-width: 8;
+    &.incomplete {
+      stroke: #e76767;
+    }
+    &.complete {
+      stroke: #3abda9;
+    }
+    &.partial {
+      stroke: #6d87dd;
+    }
+  }
+}

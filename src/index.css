@@ -1,0 +1,22 @@
+@custom-media --OSdark (prefers-color-scheme: dark);
+
+html {
+  block-size: 100%;
+  font-family: system-ui, sans-serif;
+  background-color: hsl(210deg 17% 98%);
+
+  @media (--OSdark) {
+    background-color: hsl(210deg 11% 15%);
+  }
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+#root {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
