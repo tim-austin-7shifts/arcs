@@ -1,4 +1,5 @@
 import { CSSProperties, useState } from "react";
+import classnames from "classnames";
 import logo from "./logo.svg";
 import "./App.css";
 
@@ -40,15 +41,20 @@ const percentageToAngle = (p: number): number => 360 * p;
 
 function App() {
   const [zoom, setZoom] = useState<Zoom>("big");
+  const [active, setActive] = useState<string | null>(null);
 
   const complete = percentageToAngle(0.6);
   const partial = percentageToAngle(0.1);
   const incomplete = percentageToAngle(0.3);
 
+  const isCompleteActive = active === "complete";
+  const isPartialActive = active === "partial";
+  const isIncompleteActive = active === "incomplete";
+
   return (
     <main
       className="content"
-      onClick={() => setZoom((zoom) => (zoom === "big" ? "small" : "big"))}
+      // onClick={() => setZoom((zoom) => (zoom === "big" ? "small" : "big"))}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +63,11 @@ function App() {
         viewBox="0 0 100 100"
       >
         <path
-          className="arc incomplete"
+          onClick={() => setActive("incomplete")}
+          className={classnames({
+            "arc incomplete": true,
+            active: isIncompleteActive,
+          })}
           d={describeArc(
             50,
             50,
@@ -67,11 +77,19 @@ function App() {
           )}
         ></path>
         <path
-          className="arc partial"
+          onClick={() => setActive("partial")}
+          className={classnames({
+            "arc partial": true,
+            active: isPartialActive,
+          })}
           d={describeArc(50, 50, 40, complete, complete + partial + 0.5)}
         ></path>
         <path
-          className="arc complete"
+          onClick={() => setActive("complete")}
+          className={classnames({
+            "arc complete": true,
+            active: isCompleteActive,
+          })}
           d={describeArc(50, 50, 40, 0, complete + 0.5)}
         ></path>
       </svg>

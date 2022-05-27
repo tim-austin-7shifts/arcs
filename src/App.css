@@ -7,7 +7,7 @@
 }
 
 .graph {
-  --big: 200px;
+  --big: 160px;
   --small: 100px;
 
   fill: none;
@@ -16,15 +16,23 @@
   transition: all 400ms ease;
 
   & .arc {
-    stroke-width: 8;
+    stroke-width: 10;
+    transition: all 400ms ease;
+
     &.incomplete {
       stroke: #e76767;
     }
+
     &.complete {
       stroke: #3abda9;
     }
+
     &.partial {
       stroke: #6d87dd;
+    }
+
+    &.active {
+      stroke-width: 12;
     }
   }
 }
